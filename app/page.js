@@ -15,7 +15,15 @@ export default function BasicHomePage() {
         }}
       >
         {/*left side of the homepage - main text + buttons*/}
-        <Box sx={{ flex: 1 }}>
+        <Box
+          sx={{
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <Typography
             sx={{
               color: "#fff",
@@ -41,58 +49,67 @@ export default function BasicHomePage() {
               letterSpacing: "10px",
             }}
           >
-            Very short text about project goes here
+            find out where and when you can park
           </Typography>
 
-          <Button
-            component="a"
-            href="https://console.cloud.google.com/?pli=1"
-            target="_blank"
+          <Box
             sx={{
-              color: "#fff",
-              backgroundColor: "red",
-              borderRadius: "50px",
-              textTransform: "none",
+              display: "flex",
+              flexDirection: "row",
+              gap: 2,
+              marginTop: "20px",
             }}
           >
-            Google Me
-          </Button>
+            <Button
+              component="a"
+              href="/map"
+              sx={{
+                color: "#fff",
+                backgroundColor: "red",
+                borderRadius: "50px",
+                textTransform: "none",
+                fontWeight: 900,
+                paddingLeft: "15px",
+                paddingRight: "15px",
+              }}
+            >
+              Start exploring
+            </Button>
 
-          <Button
-            component="a"
-            href="https://portal.311.nyc.gov/article/?kanumber=KA-01239"
-            target="_blank"
-            sx={{
-              color: "#fff",
-              borderRadius: "50%",
-              backgroundColor: "red",
-              marginLeft: "70px",
-              width: "40px",
-              height: "40px",
-              minWidth: 0,
-              padding: 0,
-            }}
-          >
-            <LocalParkingIcon />
-          </Button>
+            <Button
+              component="a"
+              href="https://portal.311.nyc.gov/article/?kanumber=KA-01239"
+              target="_blank"
+              sx={{
+                color: "#fff",
+                borderRadius: "50%",
+                backgroundColor: "red",
+                width: "40px",
+                height: "40px",
+                minWidth: 0,
+                padding: 0,
+              }}
+            >
+              <LocalParkingIcon />
+            </Button>
 
-          <Button
-            component="a"
-            href="https://www.nyc.gov/site/finance/vehicles/services.page"
-            target="_blank"
-            sx={{
-              color: "#fff",
-              borderRadius: "50%",
-              backgroundColor: "red",
-              marginLeft: "20px",
-              width: "40px",
-              height: "40px",
-              minWidth: 0,
-              padding: 0,
-            }}
-          >
-            <MonetizationOnIcon />
-          </Button>
+            <Button
+              component="a"
+              href="https://www.nyc.gov/site/finance/vehicles/services.page"
+              target="_blank"
+              sx={{
+                color: "#fff",
+                borderRadius: "50%",
+                backgroundColor: "red",
+                width: "40px",
+                height: "40px",
+                minWidth: 0,
+                padding: 0,
+              }}
+            >
+              <MonetizationOnIcon />
+            </Button>
+          </Box>
         </Box>
 
         {/*right side of the page - with all of the images*/}
@@ -100,7 +117,10 @@ export default function BasicHomePage() {
           sx={{
             display: "flex",
             flexDirection: "column",
-            flex: 1,
+            alignItems: "flex-start",
+            justifyContent: "center",
+            width: "40%",
+            pl: 2,
           }}
         >
           <Image
