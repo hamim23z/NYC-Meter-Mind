@@ -25,15 +25,6 @@ export default function BasicHomePage() {
           }}
         >
           <Typography
-            sx={{
-              color: "#fff",
-              letterSpacing: "10px",
-            }}
-          >
-            hello!
-          </Typography>
-
-          <Typography
             variant="h2"
             sx={{
               color: "#fff",
@@ -62,7 +53,7 @@ export default function BasicHomePage() {
           >
             <Button
               component="a"
-              href="/map"
+              href="/signs"
               sx={{
                 color: "#fff",
                 backgroundColor: "red",
