@@ -10,9 +10,20 @@ NYC Meter Mind lets users explore New York City’s parking signage data to make
 - 💬 **Modal display** of full sign details  
 - 📱 **Fully responsive** design for desktop and mobile  
 - 🎯 Clean, modern UI using Material UI + Next.js  
-- 🗺️ (Optional) Street View integration using Google Maps Embed API  **(DEVELOPING THIS NEXT!)**
 
-## 🚀 Demo
+<br>
+
+## 🔍 Upcoming Features
+
+- 🔎 Parking Predictor (Machine Learning) - Where can I most likely find parking in the next 10 mins?
+- 🗺️ Street View integration using Google Maps Embed API 
+- 📷 Add DOT Cameras for different angles apart from street view
+
+
+<br>
+
+
+## 🚀 Demo - Very Early Stages
 
 https://nycmetermind.vercel.app/
 
