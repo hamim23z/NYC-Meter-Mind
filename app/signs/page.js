@@ -73,7 +73,6 @@ export default function SignsPage() {
         setLoading(false);
       }
     };
-
     fetchAllData();
   }, []);
 
@@ -109,10 +108,10 @@ export default function SignsPage() {
         variant="outlined"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
+        fullWidth
         sx={{
           mb: 3,
           backgroundColor: "#333",
-          borderRadius: 1,
           width: {
             xs: "90%",
             sm: "80%",
@@ -145,18 +144,21 @@ export default function SignsPage() {
             }}
           >
             {paginated.map((sign, i) => (
-              <Grid item xs={12} md={4} key={`${sign.id}-${i}`}>
+              <Grid
+                item
+                xs={12}
+                key={`${sign.id}-${i}`}
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
                 <Card
                   sx={{
                     display: "flex",
                     flexDirection: "row",
                     height: 180,
-                    width: {
-                      xs: 340,
-                      sm: 300,
-                      md: 350,
-                      lg: 400,
-                    },
+                    width: 400,
                     cursor: "pointer",
                   }}
                   onClick={() => setSelectedSign(sign)}
@@ -215,7 +217,6 @@ export default function SignsPage() {
         </>
       )}
 
-      {/*modal */}
       <Modal open={!!selectedSign} onClose={() => setSelectedSign(null)}>
         <Box
           sx={{
@@ -223,7 +224,13 @@ export default function SignsPage() {
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            width: 500,
+            width: {
+              xs: "90%",
+              sm: "80%",
+              md: 500,
+            },
+            maxHeight: "90vh",
+            overflowY: "auto",
             bgcolor: "background.paper",
             boxShadow: 24,
             borderRadius: 2,
