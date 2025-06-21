@@ -1,7 +1,7 @@
+"use client"
 import { Box, Button, Typography } from "@mui/material";
 import Link from "next/link";
 import Image from "next/image";
-
 import LocalParkingIcon from "@mui/icons-material/LocalParking";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 
@@ -11,10 +11,12 @@ export default function BasicHomePage() {
       <Box
         sx={{
           display: "flex",
+          flexDirection: { xs: "column", md: "row" },
           height: "100vh",
+          bgcolor: "#000",
         }}
       >
-        {/*left side of the homepage - main text + buttons*/}
+        {/* left side */}
         <Box
           sx={{
             flex: 1,
@@ -22,6 +24,9 @@ export default function BasicHomePage() {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
+            textAlign: { xs: "center", md: "left" },
+            px: 2,
+            py: { xs: 10, md: 0 },
           }}
         >
           <Typography
@@ -29,6 +34,7 @@ export default function BasicHomePage() {
             sx={{
               color: "#fff",
               fontWeight: 900,
+              fontSize: { xs: "2rem", sm: "2.5rem", md: "4rem" },
             }}
           >
             NYC Meter Mind
@@ -38,6 +44,8 @@ export default function BasicHomePage() {
             sx={{
               color: "#fff",
               letterSpacing: "10px",
+              fontSize: { xs: "0.9rem", sm: "1rem" },
+              mt: 1,
             }}
           >
             find out where and when you can park
@@ -49,6 +57,8 @@ export default function BasicHomePage() {
               flexDirection: "row",
               gap: 2,
               marginTop: "20px",
+              flexWrap: "wrap",
+              justifyContent: { xs: "center", md: "flex-start" },
             }}
           >
             <Button
@@ -60,8 +70,7 @@ export default function BasicHomePage() {
                 borderRadius: "50px",
                 textTransform: "none",
                 fontWeight: 900,
-                paddingLeft: "15px",
-                paddingRight: "15px",
+                px: 3,
               }}
             >
               Start exploring
@@ -75,10 +84,10 @@ export default function BasicHomePage() {
                 color: "#fff",
                 borderRadius: "50%",
                 backgroundColor: "red",
-                width: "40px",
-                height: "40px",
+                width: 40,
+                height: 40,
                 minWidth: 0,
-                padding: 0,
+                p: 0,
               }}
             >
               <LocalParkingIcon />
@@ -92,10 +101,10 @@ export default function BasicHomePage() {
                 color: "#fff",
                 borderRadius: "50%",
                 backgroundColor: "red",
-                width: "40px",
-                height: "40px",
+                width: 40,
+                height: 40,
                 minWidth: 0,
-                padding: 0,
+                p: 0,
               }}
             >
               <MonetizationOnIcon />
@@ -103,15 +112,16 @@ export default function BasicHomePage() {
           </Box>
         </Box>
 
-        {/*right side of the page - with all of the images*/}
+        {/* right side */}
         <Box
           sx={{
             display: "flex",
             flexDirection: "column",
-            alignItems: "flex-start",
+            alignItems: { xs: "center", md: "flex-start" },
             justifyContent: "center",
-            width: "40%",
-            pl: 2,
+            width: { xs: "100%", md: "40%" },
+            pl: { md: 2 },
+            gap: 2,
           }}
         >
           <Image
@@ -129,6 +139,7 @@ export default function BasicHomePage() {
             style={{
               marginLeft: "200px",
             }}
+            className="van-img"
           />
 
           <Image
@@ -146,8 +157,19 @@ export default function BasicHomePage() {
             style={{
               marginLeft: "200px",
             }}
+            className="racecar-img"
           />
         </Box>
+
+        {/* Responsive overrides for mobile */}
+        <style jsx global>{`
+          @media (max-width: 900px) {
+            .van-img,
+            .racecar-img {
+              margin-left: 0 !important;
+            }
+          }
+        `}</style>
       </Box>
     </>
   );
