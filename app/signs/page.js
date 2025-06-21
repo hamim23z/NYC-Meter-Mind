@@ -191,7 +191,13 @@ export default function SignsPage() {
           </Grid>
 
           <Box
-            sx={{ mt: 4, display: "flex", justifyContent: "center", gap: 2 }}
+            sx={{
+              mt: 4,
+              display: "flex",
+              justifyContent: "center",
+              gap: 2,
+              textAlign: "center",
+            }}
           >
             <Button
               variant="contained"
