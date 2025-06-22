@@ -14,9 +14,9 @@ import {
 
 const ITEMS_PER_PAGE = 20;
 
-export default function SignsPage() {
-  const [signs, setSigns] = useState([]);
-  const [filteredSigns, setFilteredSigns] = useState([]);
+export default function MetersPage() {
+  const [meters, setMeters] = useState([]);
+  const [filteredMeters, setMeterSigns] = useState([]);
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
@@ -25,7 +25,7 @@ export default function SignsPage() {
   useEffect(() => {
     const fetchAllData = async () => {
       const PAGE_LIMIT = 50000;
-      const BASE_URL = "https://data.cityofnewyork.us/resource/nfid-uabd.json";
+      const BASE_URL = "https://data.cityofnewyork.us/resource/693u-uax6.json";
       let offset = 0;
       let allData = [];
       let hasMore = true;
@@ -45,28 +45,21 @@ export default function SignsPage() {
           }
         }
 
-        const processed = allData.map((sign, i) => ({
-          id: `${
-            sign.order_number ||
-            `sign-${i}-${Math.random().toString(36).substring(2, 8)}`
-          }`,
-          borough: sign.borough || "Unknown",
-          on_street: sign.on_street || "",
-          on_street_suffix: sign.on_street_suffix || "",
-          from_street: sign.from_street || "",
-          from_street_suffix: sign.from_street_suffix || "",
-          to_street: sign.to_street || "",
-          to_street_suffix: sign.to_street_suffix || "",
-          side_of_street: sign.side_of_street || "",
-          sign_description: sign.sign_description || "",
-          sign_location: sign.sign_location || "",
-          distance_from_intersection: sign.distance_from_intersection || "",
-          arrow_direction: sign.arrow_direction || "",
-          facing_direction: sign.facing_direction || "",
+        const processed = allData.map((meter, i) => ({
+          id:
+            meter.objectid ||
+            `meter-${i}-${Math.random().toString(36).substring(2, 8)}`,
+          borough: meter.borough || "Unknown",
+          meter_number: meter.meter_number || "N/A",
+          meter_hours: meter.meter_hours || "N/A",
+          on_street: meter.on_street || "N/A",
+          from_street: meter.from_street || "N/A",
+          to_street: meter.to_street || "N/A",
+          side_of_street: meter.side_of_street || "N/A",
+          location: meter.location || "N/A",
         }));
-
-        setSigns(processed);
-        setFilteredSigns(processed);
+        setMeters(processed);
+        setMeterSigns(processed);
         setLoading(false);
       } catch (err) {
         console.error("Error fetching data:", err);
@@ -78,17 +71,18 @@ export default function SignsPage() {
 
   useEffect(() => {
     const term = search.toLowerCase();
-    const results = signs.filter(
-      (sign) =>
-        sign.on_street.toLowerCase().includes(term) ||
-        sign.sign_description.toLowerCase().includes(term)
+    const results = meters.filter(
+      (meter) =>
+        meter.on_street.toLowerCase().includes(term) ||
+        meter.meter_number.toLowerCase().includes(term) ||
+        meter.meter_hours.toLowerCase().includes(term)
     );
-    setFilteredSigns(results);
+    setMeterSigns(results);
     setPage(1);
-  }, [search, signs]);
+  }, [search, meters]);
 
-  const totalPages = Math.ceil(filteredSigns.length / ITEMS_PER_PAGE);
-  const paginated = filteredSigns.slice(
+  const totalPages = Math.ceil(filteredMeters.length / ITEMS_PER_PAGE);
+  const paginated = filteredMeters.slice(
     (page - 1) * ITEMS_PER_PAGE,
     page * ITEMS_PER_PAGE
   );
@@ -285,7 +279,7 @@ export default function SignsPage() {
                   sx={{
                     display: "flex",
                     flexDirection: "row",
-                    height: 180,
+                    height: 190,
                     width: 400,
                     cursor: "pointer",
                   }}
@@ -300,17 +294,17 @@ export default function SignsPage() {
                       {sign.borough}
                     </Typography>
                     <Typography variant="body2" sx={{ textAlign: "center" }}>
-                      <strong>STREET:</strong> {sign.on_street}{" "}
-                      {sign.on_street_suffix}
+                      <strong>STREET:</strong> {sign.on_street}
+                      <br />
+                      <strong>METER #:</strong> {sign.meter_number}
                       <br />
                       <strong>FROM:</strong> {sign.from_street}
                       <br />
                       <strong>TO:</strong> {sign.to_street}
                       <br />
-                      <strong>DESCRIPTION:</strong>{" "}
-                      {sign.sign_description.length > 80
-                        ? sign.sign_description.slice(0, 30) + "..."
-                        : sign.sign_description}
+                      <strong>Side of Street:</strong> {sign.side_of_street}
+                      <br />
+                      <strong>HOURS:</strong> {sign.meter_hours}
                     </Typography>
                   </CardContent>
                 </Card>
@@ -381,23 +375,17 @@ export default function SignsPage() {
                 {selectedSign.borough}
               </Typography>
               <Typography variant="body1" gutterBottom>
-                <strong>Street:</strong> {selectedSign.on_street}{" "}
-                {selectedSign.on_street_suffix}
+                <strong>Street:</strong> {selectedSign.on_street}
                 <br />
-                <strong>From:</strong> {selectedSign.from_street}{" "}
-                {selectedSign.from_street_suffix}
+                <strong>Meter #:</strong> {selectedSign.meter_number}
                 <br />
-                <strong>To:</strong> {selectedSign.to_street}{" "}
-                {selectedSign.to_street_suffix}
+                <strong>From:</strong> {selectedSign.from_street}
                 <br />
-                <strong>Side:</strong> {selectedSign.side_of_street}
+                <strong>To:</strong> {selectedSign.to_street}
                 <br />
-                <strong>Location:</strong> {selectedSign.sign_location}
+                <strong>Side of Street:</strong> {selectedSign.side_of_street}
                 <br />
-                <strong>Distance:</strong>{" "}
-                {selectedSign.distance_from_intersection}
-                <br />
-                <strong>Description:</strong> {selectedSign.sign_description}
+                <strong>Meter Hours:</strong> {selectedSign.meter_hours}
               </Typography>
 
               <Box

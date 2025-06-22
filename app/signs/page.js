@@ -285,7 +285,7 @@ export default function SignsPage() {
                   sx={{
                     display: "flex",
                     flexDirection: "row",
-                    height: 180,
+                    height: 190,
                     width: 400,
                     cursor: "pointer",
                   }}
