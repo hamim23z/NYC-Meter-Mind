@@ -103,8 +103,120 @@ export default function SignsPage() {
         NYC Street Signs
       </Typography>
 
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: {
+            xs: "column",
+            sm: "column",
+            md: "row",
+            lg: "row",
+          },
+          justifyContent: "center",
+          alignItems: "center",
+          paddingTop: "10px",
+          paddingBottom: "30px",
+          gap: 3,
+        }}
+      >
+        <Button
+          variant="contained"
+          type="a"
+          href="/hub"
+          sx={{
+            backgroundColor: "#111",
+            borderRadius: "10px",
+            border: "1px solid #c42222",
+            width: {
+              xs: "100%",
+              sm: "100%",
+              md: "auto",
+            },
+            textAlign: "center",
+          }}
+        >
+          Home
+        </Button>
+
+        <Button
+          variant="contained"
+          type="a"
+          href="/signs"
+          sx={{
+            backgroundColor: "#111",
+            borderRadius: "10px",
+            border: "1px solid #c42222",
+            width: {
+              xs: "100%",
+              sm: "100%",
+              md: "auto",
+            },
+            textAlign: "center",
+          }}
+        >
+          Signs
+        </Button>
+
+        <Button
+          variant="contained"
+          type="a"
+          href="/meters"
+          sx={{
+            backgroundColor: "#111",
+            borderRadius: "10px",
+            border: "1px solid #c42222",
+            width: {
+              xs: "100%",
+              sm: "100%",
+              md: "auto",
+            },
+            textAlign: "center",
+          }}
+        >
+          Meters
+        </Button>
+
+        <Button
+          variant="contained"
+          type="a"
+          href="/predictor"
+          sx={{
+            backgroundColor: "#111",
+            borderRadius: "10px",
+            border: "1px solid #c42222",
+            width: {
+              xs: "100%",
+              sm: "100%",
+              md: "auto",
+            },
+            textAlign: "center",
+          }}
+        >
+          Parking Predictor
+        </Button>
+
+        <Button
+          variant="contained"
+          type="a"
+          href="/contact"
+          sx={{
+            backgroundColor: "#111",
+            borderRadius: "10px",
+            border: "1px solid #c42222",
+            width: {
+              xs: "100%",
+              sm: "100%",
+              md: "auto",
+            },
+            textAlign: "center",
+          }}
+        >
+          Contact
+        </Button>
+      </Box>
+
       <TextField
-        label="Search by street or description"
+        label="Search by street or description - for parking signs"
         variant="outlined"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
@@ -120,12 +232,28 @@ export default function SignsPage() {
           },
           mx: "auto",
           display: "block",
+          "& .MuiOutlinedInput-root": {
+            "& fieldset": {
+              color: "#fff",
+            },
+            "&:hover fieldset": {
+              borderColor: "#c42222",
+              color: "#fff",
+            },
+            "&.Mui-focused fieldset": {
+              borderColor: "#c42222",
+              color: "#fff",
+            },
+          },
+          "& .MuiInputLabel-root": {
+            color: "#fff",
+          },
+          "& .Mui-focused.MuiInputLabel-root": {
+            color: "#fff",
+          },
         }}
         InputProps={{
           style: { color: "#fff" },
-        }}
-        InputLabelProps={{
-          style: { color: "#ccc" },
         }}
       />
 
